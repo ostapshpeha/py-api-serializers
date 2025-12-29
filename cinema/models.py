@@ -30,6 +30,10 @@ class Actor(models.Model):
     def __str__(self):
         return self.first_name + " " + self.last_name
 
+    @property
+    def full_name(self) -> str:
+        return self.first_name + " " + self.last_name
+
 
 class Movie(models.Model):
     title = models.CharField(max_length=255)
@@ -55,6 +59,18 @@ class MovieSession(models.Model):
 
     def __str__(self):
         return self.movie.title + " " + str(self.show_time)
+
+    @property
+    def movie_title(self) -> str:
+        return self.movie.title
+
+    @property
+    def cinema_hall_capacity(self) -> int:
+        return self.cinema_hall.capacity
+
+    @property
+    def cinema_hall_name(self) -> str:
+        return self.cinema_hall.name
 
 
 class Order(models.Model):
